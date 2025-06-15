@@ -1,0 +1,25 @@
+// src/styles/_variables.scss
+
+// Core Brand Colors
+$color-primary: #2b6cb0; // Deep Blue — primary brand color
+$color-secondary: #63b3ed; // Lighter Blue — backgrounds, cards, etc.
+$color-tertiary: #bee3f8; // Very light blue — highlights, hover, etc.
+
+// Accent & Neutral
+$color-accent: #3182ce; // Use for links or interactive elements
+$color-background: #f7fafc; // App background
+$color-surface: #ffffff; // Card & container backgrounds
+$color-border: #e2e8f0; // Borders and separators
+$color-text: #1a202c; // Dark grey/black text
+$color-muted-text: #718096; // For secondary labels, descriptions
+
+// Buttons
+$button-primary-bg: $color-primary;
+$button-primary-text: #ffffff;
+
+$button-secondary-bg: $color-secondary;
+$button-secondary-text: #1a202c;
+
+// Shadows & Radius
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+$border-radius: 8px;

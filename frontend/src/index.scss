@@ -1,0 +1,24 @@
+@use "./Styles/variables" as *;
+
+@font-face {
+  font-family: "Ematane";
+  src: url("/fonts/EMATANE.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+
+h1 {
+  color: $color-primary;
+}

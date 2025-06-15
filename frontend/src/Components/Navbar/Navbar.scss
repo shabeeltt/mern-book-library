@@ -1,0 +1,80 @@
+@use "sass:color";
+@use "../../Styles/variables" as *;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &__logo {
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: "Ematane", sans-serif;
+      letter-spacing: 4px;
+      color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: $color-primary;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust($color-primary, $lightness: -10%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    &__logo h1 {
+      font-size: 1.5rem;
+    }
+
+    &__buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 460px) {
+    padding: 0.5rem;
+
+    &__logo h1 {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    &__buttons {
+      gap: 0.5rem;
+    }
+
+    &__button {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+}
