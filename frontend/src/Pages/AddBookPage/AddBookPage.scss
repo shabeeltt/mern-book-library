@@ -1,3 +1,100 @@
+@use "../../Styles/variables" as *;
+
 .add {
-  padding: 20px;
+  padding: 2rem 0;
+  background: $color-background;
+  min-height: 100vh;
+}
+
+.add-book {
+  max-width: 480px;
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  background: $color-surface;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  color: $color-text;
+  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+  border: 1px solid $color-border;
+
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: $color-primary;
+    font-family: "Ematane", sans-serif;
+    letter-spacing: 2px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  &__label {
+    font-size: 1rem;
+    color: $color-muted-text;
+    font-weight: 500;
+  }
+
+  &__input {
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    border: 1px solid $color-border;
+    background: $color-background;
+    color: $color-text;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $color-primary;
+      outline: none;
+      background: $color-tertiary;
+    }
+  }
+
+  &__error {
+    color: #f44336;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  &__success {
+    color: #4caf50;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  &__submit {
+    margin-top: 0.5rem;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    background: $button-primary-bg;
+    color: $button-primary-text;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+
+    &:hover {
+      background: darken($button-primary-bg, 10%);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .add-book {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
 }

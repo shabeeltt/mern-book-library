@@ -8,7 +8,7 @@ import bookRoute from "./routes/book.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const allowedOrigin = ["http://localhost:5173"];
+const allowedOrigin = ["http://localhost:5175"];
 
 app.use(
   cors({

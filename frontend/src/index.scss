@@ -17,8 +17,22 @@ html,
 body {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
+  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
 }
 
 h1 {
   color: $color-primary;
+}
+
+.add-book__input[type="number"] {
+  // Chrome, Safari, Edge, Opera
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  // Firefox
+  -moz-appearance: textfield;
+  appearance: textfiled;
 }
