@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./AddBookPage.scss";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const pageVariants = {
   initial: {
@@ -24,9 +25,26 @@ const pageVariants = {
 };
 
 const AddBookPage = () => {
-  const [formData, setFormData] = useState({ name: "", price: "", image: "" });
+  const location = useLocation();
+  const book = location.state;
+
+  const [formData, setFormData] = useState({
+    name: book?.name || "",
+    price: book?.price || "",
+    image: book?.image || "",
+  });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    setFormData({
+      name: book?.name || "",
+      price: book?.price || "",
+      image: book?.image || "",
+    });
+    setError("");
+    setSuccess("");
+  }, [book]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -41,17 +59,38 @@ const AddBookPage = () => {
       return;
     }
 
-    try {
-      const res = await axios.post("http://localhost:3000/api/books", formData);
-      if (res.data.success) {
-        setSuccess("Book added successfully.");
-        setFormData({ name: "", price: "", image: "" });
-      } else {
-        setError("Failed to add book.");
+    if (book) {
+      try {
+        const res = await axios.put(
+          `http://localhost:3000/api/books/${book._id}`,
+          formData
+        );
+        if (res.data.success) {
+          setSuccess("Book Edited successfully.");
+          setFormData({ name: "", price: "", image: "" });
+        } else {
+          setError("Failed to edit book.");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Server error. Try again later.");
       }
-    } catch (err) {
-      console.error(err);
-      setError("Server error. Try again later.");
+    } else {
+      try {
+        const res = await axios.post(
+          "http://localhost:3000/api/books",
+          formData
+        );
+        if (res.data.success) {
+          setSuccess("Book added successfully.");
+          setFormData({ name: "", price: "", image: "" });
+        } else {
+          setError("Failed to add book.");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Server error. Try again later.");
+      }
     }
   };
 
@@ -63,7 +102,7 @@ const AddBookPage = () => {
       animate="animate"
       exit="exit"
     >
-      <h1 className="add-book__title">Add New Book</h1>
+      <h1 className="add-book__title">{book ? "Edit Book" : "Add New Book"}</h1>
 
       <form className="add-book__form" onSubmit={handleSubmit}>
         <div className="add-book__field">
@@ -115,7 +154,7 @@ const AddBookPage = () => {
         {success && <p className="add-book__success">{success}</p>}
 
         <button type="submit" className="add-book__submit">
-          Add Book
+          {book ? "Edit Book" : "Add Book"}
         </button>
       </form>
     </motion.div>

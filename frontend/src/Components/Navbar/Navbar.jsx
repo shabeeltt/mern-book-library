@@ -11,7 +11,10 @@ const Navbar = () => {
       </div>
 
       <div className="navbar__buttons">
-        <button onClick={() => navigate("/add")} className="navbar__button">
+        <button
+          onClick={() => navigate("/add", { state: null })}
+          className="navbar__button"
+        >
           <FaPlus />
         </button>
       </div>

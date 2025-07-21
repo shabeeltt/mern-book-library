@@ -1,0 +1,79 @@
+@use "../../../Styles/variables" as *;
+@use "sass:color";
+
+.confirm-popup__overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  overflow: none;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-popup__box {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  padding: 2rem 1.8rem;
+  max-width: 420px;
+  width: 90%;
+  animation: popup-fade 0.25s ease-out;
+}
+
+.confirm-popup__message {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: $color-primary;
+  margin-bottom: 1.6rem;
+}
+
+.confirm-popup__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.confirm-popup__button {
+  font-size: 0.95rem;
+  padding: 0.55rem 1.3rem;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+
+  &--cancel {
+    background-color: $color-border;
+    color: $color-muted-text;
+
+    &:hover {
+      background-color: color.adjust($color-border, $lightness: -6%);
+    }
+  }
+
+  &--confirm {
+    background-color: $color-primary;
+    color: #fff;
+
+    &:hover {
+      background-color: color.adjust($color-primary, $lightness: -8%);
+    }
+  }
+}
+
+@keyframes popup-fade {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

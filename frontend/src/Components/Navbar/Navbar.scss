@@ -43,7 +43,7 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
 
     &__logo h1 {
@@ -64,7 +64,7 @@
     padding: 0.5rem;
 
     &__logo h1 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       letter-spacing: 2px;
     }
 

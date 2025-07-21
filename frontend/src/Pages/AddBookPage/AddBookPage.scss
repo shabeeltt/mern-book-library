@@ -1,4 +1,5 @@
 @use "../../Styles/variables" as *;
+@use "sass:color";
 
 .add {
   padding: 2rem 0;
@@ -87,7 +88,7 @@
     transition: background 0.2s;
 
     &:hover {
-      background: darken($button-primary-bg, 10%);
+      background: color.adjust($button-primary-bg, $lightness: -10%);
     }
   }
 }
